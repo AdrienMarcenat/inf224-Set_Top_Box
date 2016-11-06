@@ -1,0 +1,42 @@
+***************************************************************
+*INF224, TP de c++: "set-top box multimedia"   Adrien Marcenat*
+***************************************************************
+
+
+Etape 4: Photos et Videos
+
+La fonction play() des classes Photo et Video est déclarée au niveau de la classe de base mais implémentée au niveau de Photo et de Video, c'est donc une méthode virtuelle pure de la classe Multimedia. Elle est déclarée comme suit: virtual void play() const = 0;
+
+On ne peut plus instancier Multimedia puisqu'elle possède une méthode virtuelle pure, qui n'est donc pas implémentée. En effet avoir une instance m de la classe Multimedia nous permettrait d'écrire m.play() ce qui n'aurait pas de sens.
+
++++++++++++++++++++++++++++++
+Etape 5: Traitement générique
+
+Le polymorphisme nous permet d'écrire une boucle où l'on appelle la fonction display sans savoir si l'objet est une Photo ou une Video. En effte c'est la fonction display du pointé qui est appelée (donc celle de Photo si c'est une photo et celle de video si c'est une video) et non pas celle de la classe de base (Multimedia).
+
+En c++ il faut que la fonction display soit déclarée virtuelle pour obtenir le comportement décris ci-dessus. En java ce n'est pas nécessaire.
+
++++++++++++++
+Etape 6: Film
+
+Le mot const nous permet renvoyer un pointeur constant lors de l'appel à getChapters (qui renvoie un pointeur sur le premier élément du tableau). Ainsi l'extérieur a accès à ce pointeur mais ne peut le modifier (on peut toujours faire delete cependant, ce que je trouve bizarre).
+
+De plus lors de l'appel à setChapter, on crée un nouveau tableau puis on recopie dedans les valeurs du tableau passé en argument, ainsi si le tableau extérieur passé en argument est modifié ou détruit cela n'affecte pas le tableau de notre objet film.
+
+Le constructeur se sert de setChapters pour créer le tableau.
+
++++++++++++++++++++++++++++++++++++++
+Etape 7: destruction et copie d'objet
+
+La classe Film est pour l'instant la seule à contenir des pointeurs, il faut donc la modifier pour éviter les problème de copie et de fuite mémoire.
+
+Fuite mémoire: on rajoute un destructeur qui dit delete [] chapters. Cela détruit notre tableau.
+
+Problème de copie: si on a une instance startrek de la classe Film, et qu'on écrit Film starwars(startrek), alors le constructeur de copie généré automatiquement par le compilateur est appelé pour créer starwars et copier toutes les valeurs de startrek dans starwars, y compris la valeur du pointeur chapters! Les deux instances partage donc le même tableau, problème... idem si on écrit starwars = startrek.
+Il faut donc spécifier nous même l'implémentation du constructeur de copie et de l'opérateur =, en prenant soin de créer un nouveau tableau à chaque fois.
+
++++++++++++++++++++++++++++++++++++++
+Etape 8: créer des groupes
+
+La classe groupe n'a pas besoin de destructeur si l'on utilise des shared_ptr. En effet si le groupe est détruit, les shared_ptr qu'il contient le seront aussi mais les objets pointés ne le seront que si il s'agissait là du dernier pointeur, donc seulement s'il s'agissait du dernier groupe les contenant.  
+
