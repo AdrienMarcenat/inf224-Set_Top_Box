@@ -2,6 +2,7 @@
 #define VIDEO_H
 
 #include "multimedia.h"
+#include "table.h"
 
 class Video: public Multimedia
 {
@@ -44,8 +45,12 @@ class Video: public Multimedia
         virtual bool unserialize(std::istream& stream);
 
     private:
+
         /// The length of this video, default value is 0;
         float length = 0;
+
+        void* operator new(std::size_t);
+        friend Mulptr Table::createVideo(Name, float,  std::string); 
 };
 
 #endif // VIDEO_H

@@ -1,4 +1,8 @@
 #include "factory.h"
+#include "photo.h"
+#include "video.h"
+#include "film.h"
+
 
 void Factory::registerClass(std::string key, std::function<Mulptr()> fun)
 {

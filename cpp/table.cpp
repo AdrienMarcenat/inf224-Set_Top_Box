@@ -1,4 +1,7 @@
 #include "table.h"
+#include "photo.h"
+#include "video.h"
+#include "film.h"
 #include "factory.h"
 
 Table::Table()

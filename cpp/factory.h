@@ -2,10 +2,6 @@
 #define FACTORY_H
 
 #include "multimedia.h"
-#include "photo.h"
-#include "video.h"
-#include "film.h"
-
 #include <string>
 #include <map>
 #include <functional>

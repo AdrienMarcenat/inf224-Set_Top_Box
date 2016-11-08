@@ -2,6 +2,7 @@
 #define FILM_H
 
 #include "video.h"
+#include "table.h"
 #include <vector>
 #include <cstddef>
 
@@ -63,10 +64,14 @@ class Film: public Video
         virtual bool unserialize(std::istream& stream);
 
     private:
+
         /// A float array containing the length of each chapter.
         float* chapters;
         /// The size of chapters.
         std::size_t chapterCount;
+
+        void* operator new(std::size_t);
+        friend Mulptr Table::createFilm(Name name, const float*, std::size_t, std::string);
 };
 
 #endif // FILM_H

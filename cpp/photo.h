@@ -2,6 +2,7 @@
 #define PHOTO_H
 
 #include "multimedia.h"
+#include "table.h"
 
 class Photo: public Multimedia
 {
@@ -60,6 +61,11 @@ class Photo: public Multimedia
         float longitude = 0;
         /// Latitude of the Photo, default value is 0.
         float latitude = 0;
+
+        void* operator new(std::size_t); 
+        friend Mulptr Table::createPhoto(Name, float, float, std::string); 
+
 };
+
 
 #endif // PHOTO_H

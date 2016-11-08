@@ -1,12 +1,9 @@
 #ifndef TABLE_H
 #define TABLE_H
 
-#include "multimedia.h"
-#include "photo.h"
-#include "video.h"
-#include "film.h"
-#include "groupe.h"
 #include "factory.h"
+#include "multimedia.h"
+#include "groupe.h"
 
 #include <map>
 #include <string>
