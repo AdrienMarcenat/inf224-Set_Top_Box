@@ -71,7 +71,6 @@ class Film: public Video
         std::size_t chapterCount;
 
         void* operator new(std::size_t);
-        friend Mulptr Table::createFilm(Name name, const float*, std::size_t, std::string);
 };
 
 #endif // FILM_H

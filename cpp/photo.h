@@ -63,7 +63,6 @@ class Photo: public Multimedia
         float latitude = 0;
 
         void* operator new(std::size_t); 
-        friend Mulptr Table::createPhoto(Name, float, float, std::string); 
 
 };
 

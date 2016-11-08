@@ -50,7 +50,6 @@ class Video: public Multimedia
         float length = 0;
 
         void* operator new(std::size_t);
-        friend Mulptr Table::createVideo(Name, float,  std::string); 
 };
 
 #endif // VIDEO_H

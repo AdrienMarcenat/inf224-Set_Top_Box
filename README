@@ -2,6 +2,7 @@
 *INF224, TP de c++: "set-top box multimedia"   Adrien Marcenat*
 ***************************************************************
 
+/=================================== C++ ==============================================/
 
 Etape 4: Photos et Videos
 
@@ -35,8 +36,38 @@ Fuite mémoire: on rajoute un destructeur qui dit delete [] chapters. Cela détr
 Problème de copie: si on a une instance startrek de la classe Film, et qu'on écrit Film starwars(startrek), alors le constructeur de copie généré automatiquement par le compilateur est appelé pour créer starwars et copier toutes les valeurs de startrek dans starwars, y compris la valeur du pointeur chapters! Les deux instances partage donc le même tableau, problème... idem si on écrit starwars = startrek.
 Il faut donc spécifier nous même l'implémentation du constructeur de copie et de l'opérateur =, en prenant soin de créer un nouveau tableau à chaque fois.
 
-+++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++
 Etape 8: créer des groupes
 
 La classe groupe n'a pas besoin de destructeur si l'on utilise des shared_ptr. En effet si le groupe est détruit, les shared_ptr qu'il contient le seront aussi mais les objets pointés ne le seront que si il s'agissait là du dernier pointeur, donc seulement s'il s'agissait du dernier groupe les contenant.  
+
++++++++++++++++++++++++++++++++++++++++
+Etape 10: gestion cohérente des données
+
+Pour interdire l'usage de new sans passer par les méthode de able, on redéclare l'opérateur new en private dans les classes Video, Film, et Photo.
+
+++++++++++++++++++++++++
+Etape 11: client/serveur
+
+J'utilise une map de lambda fonctions pour gérer les commandes du serveur. Ces commandes sont créer par la classe SetTopBox dans son constructeur. 
+
++++++++++++++++++++++++++++++++++++++++
+Etape 12: serialisation/deserialisation
+
+Le format est expliqué dans la doc de Table::serialize(const std::ostream& stream).
+J'ai redéfini les opérateur << et >> dans Multimedia et fait un test lors de la création de la table:je crée une Photo avec la méthode createPhoto() de Table, puis je désérialise cette Photo avec un stream que je viens d'écrire. Cela réécris ses attributs, ce que je peux vérifier en cherchant cette objet dans la télécommande java.
+Cependant en faisant cela je peux changer le nom de la photo (ici j'ai changé "miroir" en "Bob"), or le nom dans la Table lui ne change pas, je dois donc rechercher "Bob" sous le nom "miroir" dans la télécommande... Il faudrait donc, je pense, ne pas permettre de manipuler les objet en dehors de la Table et donc ne pas renvoyer l'objet créé par createPhoto, mais plutôt rajouter des méthodes dans Tables pour manipuler les objets via leur nom.
+
+++++++++++++++++++++++++++++++++
+Etape 13: traitement des erreurs
+
+J'ai défini une classe d'erreur SerializeException dérivant de std::exception, que j'utilise dans les fonction unserialize dès qu'une erreur lors de conversion string -> float occure.
+
+
+/=================================== Java ==============================================/
+
+
+
+
+
 
