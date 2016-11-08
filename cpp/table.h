@@ -24,63 +24,63 @@ class Table
         Table();
 
         /** Creates a new Photo and puts it into the multimedia table.
-         * @param name the name of the Photo, wich is also the key in the multimedia table.
-         * @param x the longitude of the Photo.
-         * @param y the latitude of the Photo.
-         * @param pathname the pathname of the Photo.
-         * @see Photo.
-         * @see multimediaTable.
-         * @see Mulptr.
-         * @return a Mulptr pointing the created Photo.
+         * \param name the name of the Photo, wich is also the key in the multimedia table.
+         * \param x the longitude of the Photo.
+         * \param y the latitude of the Photo.
+         * \param pathname the pathname of the Photo.
+         * \see Photo.
+         * \see multimediaTable.
+         * \see Mulptr.
+         * \return a Mulptr pointing the created Photo.
          */
         Mulptr createPhoto(Name name, float x, float y, std::string pathname = "");
 
         /** Creates a new Video and puts it into the multimedia table.
-         * @param name the name of the Video, wich is also the key in the multimedia table.
-         * @param len the length of the Video.
-         * @param pathname the pathname of the Video.
-         * @see Video.
-         * @see multimediaTable.
-         * @see Mulptr.
-         * @return a Mulptr pointing the created Video.
+         * \param name the name of the Video, wich is also the key in the multimedia table.
+         * \param len the length of the Video.
+         * \param pathname the pathname of the Video.
+         * \see Video.
+         * \see multimediaTable.
+         * \see Mulptr.
+         * \return a Mulptr pointing the created Video.
          */
         Mulptr createVideo(Name name, float len, std::string pathname = "");
             
         /** Creates a new Film and puts it into the multimedia table.
-         * @param name the name of the Film, wich is also the key in the multimedia table.
-         * @param chapters a float array containing the length of each chapter.
-         * @param chapterCount the total number of chapters in the Film, i.e. the size of the param chapters.
-         * @param pathname the pathname of the Film.
-         * @see Film.
-         * @see multimediaTable.
-         * @see Mulptr.
-         * @return a Mulptr pointing the created Film.
+         * \param name the name of the Film, wich is also the key in the multimedia table.
+         * \param chapters a float array containing the length of each chapter.
+         * \param chapterCount the total number of chapters in the Film, i.e. the size of the param chapters.
+         * \param pathname the pathname of the Film.
+         * \see Film.
+         * \see multimediaTable.
+         * \see Mulptr.
+         * \return a Mulptr pointing the created Film.
          */       
         Mulptr createFilm(Name name, const float* chapters, std::size_t chapterCount, std::string pathname = "");
 
         /** Creates a new empty Groupe and puts it into the group table.
-         * @param name the name of the Groupe, wich is also the key in the group table.
-         * @see Groupe.
-         * @see groupeTable.
-         * @see Gptr.
-         * @return a Gptr pointing the created Group.
+         * \param name the name of the Groupe, wich is also the key in the group table.
+         * \see Groupe.
+         * \see groupeTable.
+         * \see Gptr.
+         * \return a Gptr pointing the created Group.
          */  
         Gptr createGroupe(Name name);
 
         /** Erases, if it exists, the pointer with the the key name in both table.          
-         * @param name the key of the object to erase.
-         * @note Since we use shared_ptr, the pointing object is destroyed only if it was the last shared_pointer.
+         * \param name the key of the object to erase.
+         * \note Since we use shared_ptr, the pointing object is destroyed only if it was the last shared_pointer.
          */ 
         void erase(Name name);
         
         /** Finds and displays, if it exists, the attributes of the object with the given name.
-         * @param name the name of the object to display.
-         * @param stream the stream in which to display.
+         * \param name the name of the object to display.
+         * \param stream the stream in which to display.
          */ 
         void find(Name name, std::ostream& stream) const;
 
         /** Finds and plays, if it exists, the multimedia object with the given name.
-         * @param name the name of the object to play.
+         * \param name the name of the object to play.
          */ 
         void play(Name name) const;
 
@@ -91,16 +91,15 @@ class Table
          *  contening only this video, the serialization will look like this: 
          *  "Table;Movies;Groupe;Batman;Video;3.2;Batman;;Batman;Video;3.2;Batman;; ;#".
          *  The character # is the end of the serialisation, which is useful for unserialisation.
-         * @param stream the stream in which to serialize the Table.
-         * @see unserialize.
+         * \param stream the stream in which to serialize the Table.
+         * \see unserialize.
          */ 
         void serialize(std::ostream& stream) const;
 
         /** Unserializes the Table by reading the given stream, rewriting all its attributes. It uses the factory. 
-         * @param stream the stream to read.
-         * @see serialize.
-         * @see factory.
-         * @note Groupes are not unserialized, so the groupeTable will remain empty after calling this method.
+         * \param stream the stream to read.
+         * \see serialize.
+         * \see factory.
          */ 
         void unserialize(std::istream& stream);
 
@@ -112,7 +111,7 @@ class Table
         std::map<Name, Mulptr> multimediaTable; 
 
         /** Used for unserialization, it can construct Mulptr.
-        * @see unserialize.
+        * \see unserialize.
         */
         Factory factory;
 };

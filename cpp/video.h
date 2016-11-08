@@ -13,19 +13,19 @@ class Video: public Multimedia
         virtual ~Video();
 
         /** Getter for the attribute length.
-         * @return length.
-         * @see length.
+         * \return length.
+         * \see length.
          */
         float getLength() const;
 
         /** Rewrites the attribute length.
-         * @param length the new length.
-         * @see length.
+         * \param length the new length.
+         * \see length.
          */
         void setLength(float length);
 
         /** Displays the attributes of this object in a given stream.
-         * @param stream the stream in which to write.
+         * \param stream the stream in which to write.
          */
         virtual void display(std::ostream& stream) const;
 
@@ -34,12 +34,12 @@ class Video: public Multimedia
         virtual void play() const;
 
         /** Serializes this object in a given stream.
-         * @param stream the stream in which to write.
+         * \param stream the stream in which to write.
          */
         virtual void serialize(std::ostream& stream) const;
 
         /** Unserializes this object by reading a given stream, rewriting all attributes.
-         * @param stream the stream to read.
+         * \param stream the stream to read.
          */
         virtual bool unserialize(std::istream& stream);
 

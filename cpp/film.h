@@ -21,44 +21,44 @@ class Film: public Video
         virtual ~Film();
 
         /** Getter for the attribute chapters.
-         * @see chapters.
-         * @return the attribute chapters.
-         * @note we return it with const, so the array is not mutable outside the object.
+         * \see chapters.
+         * \return the attribute chapters.
+         * \note we return it with const, so the array is not mutable outside the object.
          */
         const float* getChapters() const; 
 
         /** Rewrites the attribute chapters and chapterCount by copying a given float array.
-         * @param value the new chapters.
-         * @param chapterCount the new size of chapters.
-         * @see chapters.
-         * @see chapterCount.
+         * \param value the new chapters.
+         * \param chapterCount the new size of chapters.
+         * \see chapters.
+         * \see chapterCount.
          */
         void setChapters(const float* value, const std::size_t chapterCount);
         
         /** Get the length of a specific chapter, if it exist.
-         * @param num the number of the chapter.
-         * @return the length of .
+         * \param num the number of the chapter.
+         * \return the length of .
          */
         const std::size_t  getChapterLength(int num) const;
 
         /** Getter for the attribute chapterCount.
-         * @see chapterCount.
-         * @return the attribute chapterCount.
+         * \see chapterCount.
+         * \return the attribute chapterCount.
          */
         std::size_t  getChapterCount() const;
 
         /** Displays the attributes of this object in a stream.
-         * @param stream the stream in which to write.
+         * \param stream the stream in which to write.
          */
         virtual void display(std::ostream &stream) const;
         
         /** Serializes this object in a given stream.
-         * @param stream the stream in which to write.
+         * \param stream the stream in which to write.
          */
         virtual void serialize(std::ostream& stream) const;
         
         /** Unserializes this object by reading a given stream, rewriting all attributes.
-         * @param stream the stream to read.
+         * \param stream the stream to read.
          */
         virtual bool unserialize(std::istream& stream);
 

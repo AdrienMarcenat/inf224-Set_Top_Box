@@ -18,31 +18,31 @@ class Multimedia
         virtual ~Multimedia();
 
         /** Rewrites the attribute name.
-        * @param name the new name.
-        * @see name.
+        * \param name the new name.
+        * \see name.
         */
         void setName(std::string name);
         
         /** Getter for the attribute name.
-        * @see name.
-        * @return the attribute name.
+        * \see name.
+        * \return the attribute name.
         */
         std::string getName() const;
 
         /** Rewrites the attribute pathname.
-        * @param pathname the new pathname.
-        * @see pathname.
+        * \param pathname the new pathname.
+        * \see pathname.
         */
         void setPathName(std::string pathname);
 
         /** Getter for the attribute pathname.
-         * @see pathname.
-         * @return the attribute pathname.
+         * \see pathname.
+         * \return the attribute pathname.
          */
         std::string getPathName() const;
 
         /** Displays the attributes of this object in a stream.
-         * @param stream the stream in which to write.
+         * \param stream the stream in which to write.
          */
         virtual void display(std::ostream& stream) const;
          
@@ -51,12 +51,12 @@ class Multimedia
         virtual void play() const = 0;
         
         /** Serializes this object in a given stream.
-         * @param stream the stream in which to write.
+         * \param stream the stream in which to write.
          */
         virtual void serialize(std::ostream& stream) const = 0;
 
         /** Unserializes this object by reading a given stream, rewriting all attributes.
-         * @param stream the stream to read.
+         * \param stream the stream to read.
          */
         virtual bool unserialize(std::istream& stream) = 0;
 

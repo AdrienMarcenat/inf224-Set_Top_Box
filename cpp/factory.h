@@ -19,14 +19,14 @@ class Factory
 
     public:
         /** Adds a new entry in map.
-         * @param key the key associated with the function.
-         * @param fun the function associated with the key.
+         * \param key the key associated with the function.
+         * \param fun the function associated with the key.
          */
         void registerClass(std::string key, std::function<Mulptr()> fun);
 
         /** Creates a Mulptr by calling the function associated with key, and unserializes the pointed object with the given stream.
-         * @param key the key associated with the desired function.
-         * @param stream the stream to unserialize the created object.
+         * \param key the key associated with the desired function.
+         * \param stream the stream to unserialize the created object.
          * return a Mulptr pointing an unserialized object.
          */
         Mulptr create(std::string key, std::istream& stream);

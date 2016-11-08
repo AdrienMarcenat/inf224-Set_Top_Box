@@ -16,16 +16,16 @@ class DataBase
     public:
       
         /** Reads the commands sent to the server, executes them, and writes the answer.
-         *@param cnx .
-         *@param request the request sent to the server.
-         *@param response the response sent to the client.
+         *\param cnx .
+         *\param request the request sent to the server.
+         *\param response the response sent to the client.
          */
         bool processRequest(TCPConnection& cnx, const std::string& request, std::string& response);
 
         /** Registers in the map commands a new command associated with a name. 
-         * @param name the key associated with th command.
-         * @param fun the commands to register.
-         * @see commands.
+         * \param name the key associated with th command.
+         * \param fun the commands to register.
+         * \see commands.
          */
         void registerCommand(std::string name, std::function<void(Name, std::ostream&)> fun); 
        
