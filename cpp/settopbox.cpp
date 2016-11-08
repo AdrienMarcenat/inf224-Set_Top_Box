@@ -8,14 +8,14 @@ SetTopBox::SetTopBox()
     // Fills the data base with some data
     Mulptr photo = table.createPhoto("miroir", 12, 15);
     std::stringstream stream("1;2;Bob;C:/;");
-    //photo->unserialize(stream);
+    *photo >> stream;
     Mulptr video = table.createVideo("live", 120);
     //video->unserialize(stream);
     float* batman = new float[2];
     batman[0] = 5;
     batman[1] = 4;
     Mulptr film = table.createFilm("batman", batman, 2);
-    film->unserialize(stream);
+    //film->unserialize(stream);
 
     //Register the data base's lambda functions
     base.registerCommand("display",

@@ -60,6 +60,9 @@ class Multimedia
          */
         virtual bool unserialize(std::istream& stream) = 0;
 
+        virtual std::ostream& operator<<(std::ostream& os);
+        virtual std::istream& operator>>(std::istream& is);
+
     protected:
         /// The name of the Multimedia object, used by the class Table. Default value is "";
         std::string name;

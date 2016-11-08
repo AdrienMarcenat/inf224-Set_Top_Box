@@ -39,3 +39,15 @@ void Multimedia::display(std::ostream& stream) const
     stream << "name: " + name + " pathname: " + pathname;
     stream << std::endl;
 }
+
+std::ostream& Multimedia::operator<<(std::ostream& os)
+{
+    serialize(os);
+    return os;
+}
+
+std::istream& Multimedia::operator>>(std::istream& is)
+{
+    unserialize(is);
+    return is;
+}
