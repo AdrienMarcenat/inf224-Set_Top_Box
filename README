@@ -1,8 +1,7 @@
-***************************************************************
-*INF224, TP de c++: "set-top box multimedia"   Adrien Marcenat*
-***************************************************************
+**********************************************************************
+*INF224 - S1P1, TP de c++: "set-top box multimedia"   Adrien Marcenat*
+**********************************************************************
 
-/=================================== C++ ==============================================/
 
 Etape 4: Photos et Videos
 
@@ -64,7 +63,6 @@ Etape 13: traitement des erreurs
 J'ai défini une classe d'erreur SerializeException dérivant de std::exception, que j'utilise dans les fonction unserialize dès qu'une erreur lors de conversion string -> float occure.
 
 
-/=================================== Java ==============================================/
 
 
 
